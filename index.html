@@ -13,6 +13,20 @@
 .hero{min-height:690px;padding:100px 0 80px;display:flex;flex-direction:column;justify-content:space-between;position:relative}.eyebrow{font:11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}h1{font-size:clamp(64px,11vw,142px);line-height:.91;letter-spacing:-.095em;margin:40px 0 28px;font-weight:800;max-width:1000px}h1 em{font-style:normal;color:var(--lime)}.hero-bottom{display:flex;justify-content:space-between;align-items:end;gap:30px}.intro{max-width:440px;color:var(--muted);font-size:16px;line-height:1.8}.intro strong{color:var(--text);font-weight:600}.circle{width:126px;height:126px;border:1px solid #526044;border-radius:50%;display:grid;place-items:center;color:var(--lime);font:11px var(--mono);text-align:center;transform:rotate(-15deg)}
 .section{padding:100px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px}.kicker{font:11px var(--mono);color:var(--lime);letter-spacing:.12em}.section h2{font-size:clamp(38px,6vw,72px);letter-spacing:-.075em;line-height:1;margin:12px 0 0}.small{font:11px var(--mono);color:var(--muted)}
 .projects{display:grid;grid-template-columns:1fr 1fr;gap:14px}.project{min-height:330px;border:1px solid var(--line);background:linear-gradient(145deg,#151a14,#0c0f0c 65%);padding:28px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s}.project:hover{border-color:#758c50;transform:translateY(-4px)}.project-top{display:flex;justify-content:space-between;color:var(--muted);font:11px var(--mono)}.project h3{font-size:38px;letter-spacing:-.07em;margin:0 0 12px}.project p{max-width:390px;color:var(--muted);line-height:1.7;font-size:14px}.tags{display:flex;gap:8px;flex-wrap:wrap}.tags span{border:1px solid var(--line);padding:7px 10px;border-radius:30px;color:#b8c0b2;font:10px var(--mono)}.arrow{color:var(--lime);font-size:24px}
+.project-trigger{width:100%;text-align:left;color:inherit;font:inherit;cursor:pointer}
+.project-trigger:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
+.project-dialog{position:fixed;inset:0;z-index:20;display:none;place-items:center;padding:22px;background:#000b;backdrop-filter:blur(10px)}
+.project-dialog.open{display:grid}
+.dialog-card{width:min(420px,100%);padding:28px;border:1px solid #394334;background:#101410;box-shadow:0 24px 90px #000b;position:relative}
+.dialog-card h3{font-size:30px;letter-spacing:-.06em;margin:8px 0 6px}
+.dialog-card p{color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 24px}
+.dialog-actions{display:grid;gap:10px}
+.dialog-link{display:flex;justify-content:space-between;align-items:center;padding:15px 16px;border:1px solid var(--line);font:12px var(--mono);transition:.2s}
+.dialog-link:hover{border-color:var(--lime);color:var(--lime)}
+.dialog-link.primary{background:var(--lime);color:#10140c;border-color:var(--lime)}
+.dialog-link.primary:hover{background:#ddff9d}
+.dialog-link[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.dialog-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--muted);font-size:24px;cursor:pointer}
 .approach{display:grid;grid-template-columns:1fr 1fr;gap:80px}.approach p{font-size:clamp(20px,3vw,30px);line-height:1.55;letter-spacing:-.04em;margin:0}.approach p span{color:var(--muted)}.stack{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.stack div{padding:22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font:13px var(--mono);color:#c5cec0}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}.about-grid p{color:var(--muted);line-height:1.9;font-size:15px;margin:0}.contact{padding:110px 0 90px;border-top:1px solid var(--line)}.contact h2{font-size:clamp(54px,10vw,120px);letter-spacing:-.09em;line-height:.95;margin:28px 0 40px}.contact h2 span{color:var(--lime)}.contact-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:24px}.button{display:inline-flex;align-items:center;gap:14px;background:var(--lime);color:#11150d;padding:15px 20px;font:12px var(--mono);font-weight:500}.button:hover{background:#ddff9d}.footer{padding:24px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font:10px var(--mono)}
 @media(max-width:700px){.wrap{width:calc(100% - 36px)}.top{height:65px}nav{gap:13px;font-size:10px}.status{display:none}.hero{min-height:650px;padding:90px 0 55px}h1{font-size:clamp(58px,15vw,100px)}.hero-bottom{align-items:start}.circle{width:85px;height:85px;font-size:9px;flex-shrink:0}.intro{font-size:14px}.section{padding:75px 0}.section-head{margin-bottom:30px}.projects,.approach,.about-grid{grid-template-columns:1fr;gap:14px}.project{min-height:290px}.stack{grid-template-columns:repeat(2,1fr)}.contact{padding:80px 0 65px}.contact-row{align-items:start;gap:20px;flex-direction:column}.footer{gap:15px;flex-wrap:wrap}}
@@ -23,14 +37,37 @@
 <main>
 <section class="wrap hero"><div><div class="eyebrow">ENGINEER · CREATOR · PROBLEM SOLVER</div><h1>BEYOND<br>THE <em>INTERFACE.</em></h1></div><div class="hero-bottom"><p class="intro"><strong>I'm Samarth Kumbhar.</strong> I build digital experiences with a focus on useful ideas, thoughtful details, and software that works beautifully.</p><div class="circle">CURIOUS BY<br>DEFAULT ↗</div></div></section>
 <section class="section" id="work"><div class="wrap"><div class="section-head"><div><div class="kicker">01 / SELECTED WORK</div><h2>Things I've built.</h2></div><div class="small">PROJECTS ↘</div></div><div class="projects">
-<a class="project" href="https://github.com/samarthtgg/connectx" target="_blank" rel="noreferrer"><div class="project-top"><span>01 — SOCIAL / COMMUNICATION</span><span>↗</span></div><div><h3>ConnectX</h3><p>A social messaging project exploring how people connect, communicate, and share experiences online.</p><div class="tags"><span>WEB APP</span><span>REAL-TIME</span><span>PRODUCT</span></div></div></a>
-<a class="project" href="https://github.com/samarthtgg/Sammycalci" target="_blank" rel="noreferrer"><div class="project-top"><span>02 — UTILITY / PRODUCTIVITY</span><span>↗</span></div><div><h3>Sammycalci</h3><p>A calculator project built to make everyday calculations straightforward and accessible.</p><div class="tags"><span>UTILITY</span><span>INTERFACE</span><span>TOOL</span></div></div></a>
+<button class="project project-trigger" type="button" data-project="ConnectX" data-github="https://github.com/samarthtgg/connectx" data-app="https://connectx-samarthtgg.vercel.app/"><div class="project-top"><span>01 — SOCIAL / COMMUNICATION</span><span>↗</span></div><div><h3>ConnectX</h3><p>A social messaging project exploring how people connect, communicate, and share experiences online.</p><div class="tags"><span>WEB APP</span><span>REAL-TIME</span><span>PRODUCT</span></div></div></button>
+<button class="project project-trigger" type="button" data-project="Sammycalci" data-github="https://github.com/samarthtgg/Sammycalci" data-app=""><div class="project-top"><span>02 — UTILITY / PRODUCTIVITY</span><span>↗</span></div><div><h3>Sammycalci</h3><p>A calculator project built to make everyday calculations straightforward and accessible.</p><div class="tags"><span>UTILITY</span><span>INTERFACE</span><span>TOOL</span></div></div></button>
 </div></div></section>
 <section class="section"><div class="wrap"><div class="section-head"><div><div class="kicker">02 / HOW I THINK</div><h2>Simple is hard.</h2></div></div><div class="approach"><p>I like turning <span>messy problems into clear, usable experiences.</span></p><p><span>From the first sketch to the final detail,</span> I care about how things work, not just how they look.</p></div></div></section>
 <section class="section" id="about"><div class="wrap"><div class="section-head"><div><div class="kicker">03 / TOOLKIT</div><h2>What I work with.</h2></div></div><div class="stack"><div>JavaScript</div><div>TypeScript</div><div>React</div><div>Next.js</div><div>Java</div><div>Supabase</div><div>SQL</div><div>Git & GitHub</div></div><div class="section-head" style="margin:75px 0 25px"><div><div class="kicker">A LITTLE ABOUT ME</div></div></div><div class="about-grid"><p>I'm Samarth, an engineer interested in building practical software and exploring how technology can make everyday tasks easier.</p><p>This portfolio is a living snapshot of what I'm learning, making, and improving. More experiments and projects will find their way here.</p></div></div></section>
 <section class="contact" id="contact"><div class="wrap"><div class="kicker">04 / YOUR TURN</div><h2>Have an idea?<br><span>Let's build.</span></h2><div class="contact-row"><div class="small">OPEN TO GOOD IDEAS & COLLABORATION</div><a class="button" href="https://github.com/samarthtgg" target="_blank" rel="noreferrer">FIND ME ON GITHUB ↗</a></div></div></section>
 </main>
+<div class="project-dialog" id="projectDialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+<div class="dialog-card">
+<button class="dialog-close" type="button" aria-label="Close dialog" id="dialogClose">×</button>
+<div class="kicker">OPEN PROJECT</div><h3 id="dialogTitle">Project</h3><p>Choose where you want to go.</p>
+<div class="dialog-actions">
+<a class="dialog-link" id="githubAction" href="#" target="_blank" rel="noreferrer">OPEN GITHUB <span>↗</span></a>
+<a class="dialog-link primary" id="appAction" href="#" target="_blank" rel="noreferrer">OPEN APP <span>↗</span></a>
+</div>
+</div></div>
 <footer class="wrap footer"><span>© <span id="year"></span> SAMARTH KUMBHAR</span><span>DESIGNED TO KEEP MOVING ↗</span></footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const dialog=document.getElementById('projectDialog'), title=document.getElementById('dialogTitle'), gh=document.getElementById('githubAction'), app=document.getElementById('appAction'), close=document.getElementById('dialogClose');
+document.querySelectorAll('.project-trigger').forEach(card=>card.addEventListener('click',()=>{
+ title.textContent=card.dataset.project;
+ gh.href=card.dataset.github;
+ if(card.dataset.app){app.href=card.dataset.app;app.removeAttribute('aria-disabled');app.setAttribute('tabindex','0');}
+ else{app.removeAttribute('href');app.setAttribute('aria-disabled','true');app.setAttribute('tabindex','-1');}
+ dialog.classList.add('open');close.focus();
+}));
+function closeDialog(){dialog.classList.remove('open');}
+close.addEventListener('click',closeDialog);
+dialog.addEventListener('click',e=>{if(e.target===dialog)closeDialog();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDialog();});
+</script>
 </body>
 </html>
